@@ -11,7 +11,6 @@
 		BE6EA7B62D38B715005D8BE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6EA7B52D38B715005D8BE8 /* ContentView.swift */; };
 		BE6EA7B82D38B715005D8BE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6EA7B72D38B715005D8BE8 /* Assets.xcassets */; };
 		BE6EA7BB2D38B715005D8BE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6EA7BA2D38B715005D8BE8 /* Preview Assets.xcassets */; };
-		BE6EA7C32D38BEB7005D8BE8 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = BE6EA7C22D38BEB7005D8BE8 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE6EA7C32D38BEB7005D8BE8 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +84,6 @@
 			);
 			name = WorkoutPlanner;
 			packageProductDependencies = (
-				BE6EA7C22D38BEB7005D8BE8 /* ComposableArchitecture */,
 			);
 			productName = WorkoutPlanner;
 			productReference = BE6EA7B02D38B715005D8BE8 /* WorkoutPlanner.app */;
@@ -117,7 +114,6 @@
 			);
 			mainGroup = BE6EA7A72D38B714005D8BE8;
 			packageReferences = (
-				BE6EA7C12D38BEB7005D8BE8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = BE6EA7B12D38B715005D8BE8 /* Products */;
 			projectDirPath = "";
@@ -352,25 +348,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		BE6EA7C12D38BEB7005D8BE8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.17.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		BE6EA7C22D38BEB7005D8BE8 /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BE6EA7C12D38BEB7005D8BE8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BE6EA7A82D38B714005D8BE8 /* Project object */;
 }
