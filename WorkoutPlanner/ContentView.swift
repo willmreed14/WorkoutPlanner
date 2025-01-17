@@ -18,6 +18,7 @@ struct ContentView: View {
                             .padding()
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
             
             // Floating Label Overlay
