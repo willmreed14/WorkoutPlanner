@@ -11,9 +11,19 @@ struct ContentView: View {
     var body: some View {
         VStack{ // Vertical stack
             HStack{ // Horizontal stack
-                Label("Monday: Push", systemImage: /*@START_MENU_TOKEN@*/"42.circle"/*@END_MENU_TOKEN@*/)
+                Text("Monday:")
+                    .font(.title)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                
+                Text("Push")
+                    .font(.title)
+                
+                Image(systemName:"dumbbell")
+                    .font(.title)
+                
                 Spacer() // Push the content to the left
             }
+            
             Spacer() // Push the content to the top
         }
         .padding() // Keep it spaced from the screen edges
