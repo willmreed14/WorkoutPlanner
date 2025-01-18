@@ -7,34 +7,50 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct ContentView: View {
+    
+    let exercises: [Exercise] = [
+        Exercise(name: "Lat Pulldown", sets: [
+            Set(number: 1, reps: 10, weight: 100),
+            Set(number: 2, reps: 10, weight: 100),
+            Set(number: 3, reps: 10, weight: 100)
+        ]),
+        Exercise(name: "Bench Press", sets: [
+            Set(number: 1, reps: 8, weight: 150),
+            Set(number: 2, reps: 8, weight: 150),
+            Set(number: 3, reps: 8, weight: 150)
+        ])
+    ]
+
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
-                VStack(alignment: .leading, spacing: 15) { // Left-aligned content items
-                    ForEach(1...10, id: \.self) { index in
-                        // Label for each exercise
-                        Text("Exercise \(index)")
-                            .fontWeight(.thin)
-                        // Sets and details inside the disclosure group
+                VStack(alignment: .leading, spacing: 15) {
+                    // Add an invisible spacer to simulate initial scroll offset
+                    Color.clear
+                        .frame(height: 50) // Adjust height to match the space you want to skip
+
+                    ForEach(exercises) { exercise in
                         VStack(alignment: .leading, spacing: 5) {
-                            ForEach(1...3, id: \.self) { set in
-                                Text("Set: \(set) Reps: 10 Weight: 100")
+                            Text(exercise.name)
+                                .font(.headline)
+                            
+                            ForEach(exercise.sets) { set in
+                                Text("Set: \(set.number) Reps: \(set.reps) Weight: \(set.weight)")
                                     .font(.subheadline)
-                                    //.foregroundColor(.gray)
                             }
                             Divider()
                         }
-                        //.padding()
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(8)
+                        .shadow(radius: 2)
                     }
                 }
                 .padding()
-                .frame(maxWidth: .infinity, alignment: .leading) // Enforce left alignment
             }
             
-            // Floating label (your existing layout)
+            // Floating label
             VStack {
                 HStack {
                     Text("Monday:")
@@ -61,4 +77,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
 
