@@ -13,31 +13,25 @@ struct ContentView: View {
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) { // Left-aligned content items
+                VStack(alignment: .leading, spacing: 15) { // Left-aligned content items
                     ForEach(1...10, id: \.self) { index in
-                        DisclosureGroup {
-                            // Sets and details inside the disclosure group
-                            VStack(alignment: .leading, spacing: 5) {
-                                ForEach(1...3, id: \.self) { set in
-                                    Text("Set: \(set) Reps: 10 Weight: 100")
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
-                                }
+                        // Label for each exercise
+                        Text("Exercise \(index)")
+                            .fontWeight(.thin)
+                        // Sets and details inside the disclosure group
+                        VStack(alignment: .leading, spacing: 5) {
+                            ForEach(1...3, id: \.self) { set in
+                                Text("Set: \(set) Reps: 10 Weight: 100")
+                                    .font(.subheadline)
+                                    //.foregroundColor(.gray)
                             }
-                        } label: {
-                            HStack {
-                                Text("Exercise \(index)")
-                                    .font(.headline)
-                                    .fontWeight(.bold)
-                            }
+                            Divider()
                         }
-                        .padding()
-                        .background(Color(.systemBackground))
-                        .cornerRadius(10)
-                        .shadow(radius: 2)
+                        //.padding()
                     }
                 }
-                .padding(.horizontal)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading) // Enforce left alignment
             }
             
             // Floating label (your existing layout)
