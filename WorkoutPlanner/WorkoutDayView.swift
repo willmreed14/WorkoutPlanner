@@ -73,9 +73,8 @@ struct WorkoutDayView: View {
             .frame(maxWidth: .infinity)
             .zIndex(1)
         }
-        .padding(.top, -50) // Adjust for nav bar
         .navigationBarTitle("") // Remove nav bar text
-        .navigationBarHidden(false) // keep the back button
+        //.navigationBarBackButtonHidden()
     }
 }
 
