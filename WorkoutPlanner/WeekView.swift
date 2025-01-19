@@ -16,7 +16,7 @@ struct WeekView: View {
     var body: some View {
         NavigationView {
             List(daysOfWeek, id: \.self) { day in
-                NavigationLink(destination: WorkoutDayView(day: day)) {
+                NavigationLink(destination: WorkoutDayView(day: day)) { // pass in the day
                     Text(day)
                         .font(.headline)
                         .padding()

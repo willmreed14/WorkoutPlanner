@@ -55,7 +55,7 @@ struct WorkoutDayView: View {
             // Floating label
             VStack {
                 HStack {
-                    Text("Monday:")
+                    Text("\(day):")
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -73,6 +73,9 @@ struct WorkoutDayView: View {
             .frame(maxWidth: .infinity)
             .zIndex(1)
         }
+        .padding(.top, -50) // Adjust for nav bar
+        .navigationBarTitle("") // Remove nav bar text
+        .navigationBarHidden(false) // keep the back button
     }
 }
 
