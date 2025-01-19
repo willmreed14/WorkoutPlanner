@@ -12,6 +12,7 @@
 		BE6EA7B62D38B715005D8BE8 /* WorkoutDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6EA7B52D38B715005D8BE8 /* WorkoutDayView.swift */; };
 		BE6EA7B82D38B715005D8BE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6EA7B72D38B715005D8BE8 /* Assets.xcassets */; };
 		BE6EA7BB2D38B715005D8BE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6EA7BA2D38B715005D8BE8 /* Preview Assets.xcassets */; };
+		BE9F61662D3DAE6600F27AA2 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F61652D3DAE6600F27AA2 /* WeekView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		BE6EA7B52D38B715005D8BE8 /* WorkoutDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDayView.swift; sourceTree = "<group>"; };
 		BE6EA7B72D38B715005D8BE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE6EA7BA2D38B715005D8BE8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BE9F61652D3DAE6600F27AA2 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				BE6EA7B32D38B715005D8BE8 /* WorkoutPlannerApp.swift */,
+				BE9F61652D3DAE6600F27AA2 /* WeekView.swift */,
 				BE6EA7B52D38B715005D8BE8 /* WorkoutDayView.swift */,
 				BE127D432D3B5F95001BE9E1 /* Models.swift */,
 				BE6EA7B72D38B715005D8BE8 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE9F61662D3DAE6600F27AA2 /* WeekView.swift in Sources */,
 				BE127D442D3B5F95001BE9E1 /* Models.swift in Sources */,
 				BE6EA7B62D38B715005D8BE8 /* WorkoutDayView.swift in Sources */,
 				BE6EA7B42D38B715005D8BE8 /* WorkoutPlannerApp.swift in Sources */,

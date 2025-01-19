@@ -9,6 +9,8 @@ import SwiftUI
 
 struct WorkoutDayView: View {
     
+    let day: String // accept the day as a parameter
+    
     let exercises: [Exercise] = [
         Exercise(name: "Lat Pulldown", sets: [
             Set(number: 1, reps: 10, weight: 100),
@@ -75,7 +77,7 @@ struct WorkoutDayView: View {
 }
 
 #Preview {
-    WorkoutDayView()
+    WorkoutDayView(day: "Monday")
 }
 
 
