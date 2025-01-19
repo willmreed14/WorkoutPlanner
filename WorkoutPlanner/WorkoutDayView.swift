@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct WorkoutDayView: View {
     
     let exercises: [Exercise] = [
         Exercise(name: "Lat Pulldown", sets: [
@@ -75,7 +75,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    WorkoutDayView()
 }
 
 
