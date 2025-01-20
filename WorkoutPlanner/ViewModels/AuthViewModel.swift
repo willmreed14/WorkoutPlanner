@@ -5,6 +5,7 @@ class AuthViewModel: ObservableObject {
     @Published var user: User? // Store the current Firebase user
     @Published var isAuthenticated: Bool = false
     @Published var errorMessage: String? // error message of login does not work
+    @Published var signUpSuccess: Bool = false // Track successful sign up
 
     init() {
         // Check if a user is already signed in when the app launches
@@ -36,6 +37,7 @@ class AuthViewModel: ObservableObject {
 
             self?.user = result?.user
             self?.isAuthenticated = true
+            self?.signUpSuccess = true
             print("Successfully signed up as \(self?.user?.email ?? "Unknown User")")
         }
     }

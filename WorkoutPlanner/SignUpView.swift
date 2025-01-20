@@ -13,41 +13,71 @@ struct SignUpView: View {
     @State private var password: String = ""
 
     var body: some View {
-        VStack {
-            Text("Sign Up")
-                .font(.largeTitle)
-                .bold()
-                .padding(.bottom, 20)
+        NavigationStack {
+            VStack {
+                if viewModel.signUpSuccess {
+                    // Confirmation Message
+                    VStack {
+                        Text("Account Created!")
+                            .font(.largeTitle)
+                            .bold()
+                            .foregroundColor(.green)
+                            .padding(.bottom, 10)
 
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
-                .padding()
+                        Text("You can now sign in using your email and password.")
+                            .multilineTextAlignment(.center)
+                            .padding(.bottom, 20)
 
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            if let errorMessage = viewModel.errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
+                        NavigationLink(destination: SignInView()) {
+                            Text("Go to Sign In")
+                                .bold()
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                        }
+                        .padding()
+                    }
                     .padding()
-            }
+                } else {
+                    // Sign-Up Form
+                    Text("Sign Up")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding(.bottom, 20)
 
-            Button(action: { viewModel.signUp(email: email, password: password) }) {
-                Text("Sign Up")
-                    .bold()
-                    .frame(maxWidth: .infinity)
+                    TextField("Email", text: $email)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .autocapitalization(.none)
+                        .padding()
+
+                    SecureField("Password", text: $password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+
+                    if let errorMessage = viewModel.errorMessage {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .padding()
+                    }
+
+                    Button(action: { viewModel.signUp(email: email, password: password) }) {
+                        Text("Sign Up")
+                            .bold()
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
                     .padding()
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+                }
+
+                Spacer()
             }
             .padding()
-
-            Spacer()
         }
-        .padding()
     }
 }
 

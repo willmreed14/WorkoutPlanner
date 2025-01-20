@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WeekView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     let daysOfWeek = [
         "Monday", "Tuesday", "Wednesday",
         "Thursday", "Friday", "Saturday", "Sunday"
@@ -24,6 +26,19 @@ struct WeekView: View {
             }
             .navigationTitle("Week View")
         }
+        // Add a sign-out button for testing
+        Button(action: {
+            authViewModel.signOut()
+        }) {
+            Text("Sign Out")
+                .bold()
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.red)
+                .foregroundColor(.white)
+                .cornerRadius(8)
+        }
+        .padding()
     }
 }
 
