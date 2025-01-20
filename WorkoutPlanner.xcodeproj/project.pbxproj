@@ -28,6 +28,7 @@
 		BE6EA7B82D38B715005D8BE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6EA7B72D38B715005D8BE8 /* Assets.xcassets */; };
 		BE6EA7BB2D38B715005D8BE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6EA7BA2D38B715005D8BE8 /* Preview Assets.xcassets */; };
 		BE9F61662D3DAE6600F27AA2 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F61652D3DAE6600F27AA2 /* WeekView.swift */; };
+		BED4315E2D3DFA200092BEA3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4315D2D3DFA200092BEA3 /* RootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		BE6EA7B72D38B715005D8BE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE6EA7BA2D38B715005D8BE8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BE9F61652D3DAE6600F27AA2 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		BED4315D2D3DFA200092BEA3 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				BE253B152D3DECD000515AB3 /* SignUpView.swift */,
 				BE9F61652D3DAE6600F27AA2 /* WeekView.swift */,
 				BE6EA7B52D38B715005D8BE8 /* WorkoutDayView.swift */,
+				BED4315D2D3DFA200092BEA3 /* RootView.swift */,
 				BE127D432D3B5F95001BE9E1 /* Models.swift */,
 				BE253B122D3DEC2F00515AB3 /* ViewModels */,
 				BE253AF72D3DE75600515AB3 /* GoogleService-Info.plist */,
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BED4315E2D3DFA200092BEA3 /* RootView.swift in Sources */,
 				BE9F61662D3DAE6600F27AA2 /* WeekView.swift in Sources */,
 				BE127D442D3B5F95001BE9E1 /* Models.swift in Sources */,
 				BE253B142D3DEC5B00515AB3 /* AuthViewModel.swift in Sources */,

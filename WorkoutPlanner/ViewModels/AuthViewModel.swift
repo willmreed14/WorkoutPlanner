@@ -2,17 +2,27 @@ import FirebaseAuth
 import SwiftUI
 
 class AuthViewModel: ObservableObject {
-    @Published var errorMessage: String?
-    @Published var isAuthenticated = false
+    @Published var user: User? // Store the current Firebase user
+    @Published var isAuthenticated: Bool = false
+    @Published var errorMessage: String? // error message of login does not work
+
+    init() {
+        // Check if a user is already signed in when the app launches
+        self.user = Auth.auth().currentUser
+        self.isAuthenticated = user != nil
+    }
 
     func signIn(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
             if let error = error {
-                self?.errorMessage = error.localizedDescription
+                // Update errorMessage with a user-friendly message
+                self?.errorMessage = "Invalid credentials. Please try again."
+                print("Error signing in: \(error.localizedDescription)")
             } else {
-                self?.errorMessage = nil
+                self?.user = result?.user
                 self?.isAuthenticated = true
-                print("User signed in: \(result?.user.uid ?? "")")
+                self?.errorMessage = nil
+                print("Successfully signed in as \(self?.user?.email ?? "Unknown User")")
             }
         }
     }
@@ -20,12 +30,23 @@ class AuthViewModel: ObservableObject {
     func signUp(email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             if let error = error {
-                self?.errorMessage = error.localizedDescription
-            } else {
-                self?.errorMessage = nil
-                self?.isAuthenticated = true
-                print("User signed up: \(result?.user.uid ?? "")")
+                print("Error signing up: \(error.localizedDescription)")
+                return
             }
+
+            self?.user = result?.user
+            self?.isAuthenticated = true
+            print("Successfully signed up as \(self?.user?.email ?? "Unknown User")")
+        }
+    }
+
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            self.user = nil
+            self.isAuthenticated = false
+        } catch let error {
+            print("Error signing out: \(error.localizedDescription)")
         }
     }
 }

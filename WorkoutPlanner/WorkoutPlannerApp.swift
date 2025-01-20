@@ -25,7 +25,7 @@ struct WorkoutPlannerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            WeekView()
+            RootView()
         }
     }
 }
