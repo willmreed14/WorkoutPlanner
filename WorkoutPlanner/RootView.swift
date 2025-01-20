@@ -14,7 +14,7 @@ struct RootView: View {
     var body: some View {
         Group { // is user authenticated?
             if authViewModel.isAuthenticated {
-                WeekView() // redirect to home page if auth'd
+                HomeView() // redirect to home page if auth'd
             } else {
                 SignInView() // otherwise, direct to sign-in
             }

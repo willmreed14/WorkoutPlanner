@@ -26,6 +26,7 @@ struct WeekView: View {
             }
             .navigationTitle("Week View")
         }
+        
         // Add a sign-out button for testing
         Button(action: {
             authViewModel.signOut()
@@ -38,6 +39,7 @@ struct WeekView: View {
                 .foregroundColor(.white)
                 .cornerRadius(8)
         }
+         
         .padding()
     }
 }
