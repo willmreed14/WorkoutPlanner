@@ -11,6 +11,7 @@ struct SignUpView: View {
     @StateObject private var viewModel = AuthViewModel()
     @State private var email: String = ""
     @State private var password: String = ""
+    @Environment(\.dismiss) private var dismiss // Add dismiss environment variable
 
     var body: some View {
         NavigationStack {
@@ -27,8 +28,10 @@ struct SignUpView: View {
                         Text("You can now sign in using your email and password.")
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 20)
-
-                        NavigationLink(destination: SignInView()) {
+                        
+                        Button(action: {
+                            dismiss() // Navigate back
+                        }) {
                             Text("Go to Sign In")
                                 .bold()
                                 .frame(maxWidth: .infinity)
@@ -37,6 +40,17 @@ struct SignUpView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(8)
                         }
+                        /*
+                        NavigationLink(destination: SignInView()) {
+                            Text("Go to Sign In")
+                                .bold()
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                         }
+                         */
                         .padding()
                     }
                     .padding()
