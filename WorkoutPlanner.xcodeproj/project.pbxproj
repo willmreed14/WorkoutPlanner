@@ -20,6 +20,8 @@
 		BE253B0B2D3DE92900515AB3 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = BE253B0A2D3DE92900515AB3 /* FirebaseCrashlytics */; };
 		BE253B0D2D3DE92900515AB3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BE253B0C2D3DE92900515AB3 /* FirebaseFirestore */; };
 		BE253B0F2D3DE92900515AB3 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = BE253B0E2D3DE92900515AB3 /* FirebaseFirestoreCombine-Community */; };
+		BE253B112D3DEA2900515AB3 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE253B102D3DEA2900515AB3 /* SignInView.swift */; };
+		BE253B142D3DEC5B00515AB3 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE253B132D3DEC5B00515AB3 /* AuthViewModel.swift */; };
 		BE6EA7B42D38B715005D8BE8 /* WorkoutPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6EA7B32D38B715005D8BE8 /* WorkoutPlannerApp.swift */; };
 		BE6EA7B62D38B715005D8BE8 /* WorkoutDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6EA7B52D38B715005D8BE8 /* WorkoutDayView.swift */; };
 		BE6EA7B82D38B715005D8BE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6EA7B72D38B715005D8BE8 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		BE127D432D3B5F95001BE9E1 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		BE253AF72D3DE75600515AB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BE253B102D3DEA2900515AB3 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		BE253B132D3DEC5B00515AB3 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		BE6EA7B02D38B715005D8BE8 /* WorkoutPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6EA7B32D38B715005D8BE8 /* WorkoutPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlannerApp.swift; sourceTree = "<group>"; };
 		BE6EA7B52D38B715005D8BE8 /* WorkoutDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDayView.swift; sourceTree = "<group>"; };
@@ -60,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE253B122D3DEC2F00515AB3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BE253B132D3DEC5B00515AB3 /* AuthViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		BE6EA7A72D38B714005D8BE8 = {
 			isa = PBXGroup;
 			children = (
@@ -80,9 +92,11 @@
 			isa = PBXGroup;
 			children = (
 				BE6EA7B32D38B715005D8BE8 /* WorkoutPlannerApp.swift */,
+				BE253B102D3DEA2900515AB3 /* SignInView.swift */,
 				BE9F61652D3DAE6600F27AA2 /* WeekView.swift */,
 				BE6EA7B52D38B715005D8BE8 /* WorkoutDayView.swift */,
 				BE127D432D3B5F95001BE9E1 /* Models.swift */,
+				BE253B122D3DEC2F00515AB3 /* ViewModels */,
 				BE253AF72D3DE75600515AB3 /* GoogleService-Info.plist */,
 				BE6EA7B72D38B715005D8BE8 /* Assets.xcassets */,
 				BE6EA7B92D38B715005D8BE8 /* Preview Content */,
@@ -187,8 +201,10 @@
 			files = (
 				BE9F61662D3DAE6600F27AA2 /* WeekView.swift in Sources */,
 				BE127D442D3B5F95001BE9E1 /* Models.swift in Sources */,
+				BE253B142D3DEC5B00515AB3 /* AuthViewModel.swift in Sources */,
 				BE6EA7B62D38B715005D8BE8 /* WorkoutDayView.swift in Sources */,
 				BE6EA7B42D38B715005D8BE8 /* WorkoutPlannerApp.swift in Sources */,
+				BE253B112D3DEA2900515AB3 /* SignInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
