@@ -12,6 +12,9 @@ import FirebaseAuth
 struct NewProgramView: View {
     @State private var programTitle: String = ""
     @State private var days: [Day] = Array(repeating: Day(title: "", exercises: []), count: 7)
+    @State private var isSaving: Bool = false // Show a saving state
+    @Environment(\.dismiss) private var dismiss
+
 
     var body: some View {
         NavigationStack {
@@ -58,44 +61,56 @@ struct NewProgramView: View {
 
                 // Save Button
                 Button(action: saveProgram) {
-                    Text("Save Program")
-                        .bold()
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                    if isSaving {
+                        ProgressView() // show a loading indicator while saving
+                            .padding()
+                    } else {
+                        Text("Save Program")
+                            .bold()
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
                 }
+                .disabled(isSaving) // Disable button while saving
                 .padding()
             }
             .navigationTitle("New Program")
         }
     }
 
-    // Function to save program
     func saveProgram() {
+        isSaving = true
         // Prepare program data for Firestore
         let program = Program(title: programTitle, days: days)
         let db = Firestore.firestore()
 
         guard let userID = Auth.auth().currentUser?.uid else {
             print("User not signed in!")
+            isSaving = false
             return
         }
 
         do {
             let programData = try Firestore.Encoder().encode(program)
             db.collection("users").document(userID).collection("programs").addDocument(data: programData) { error in
+                isSaving = false
                 if let error = error {
                     print("Error saving program: \(error.localizedDescription)")
                 } else {
                     print("Program saved successfully!")
+                    dismiss() // Directly use dismiss here
                 }
             }
         } catch {
             print("Error encoding program: \(error.localizedDescription)")
+            isSaving = false
         }
     }
+
+
 }
 
 #Preview {
