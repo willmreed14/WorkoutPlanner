@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var authViewModel: AuthViewModel
-    
     var body: some View {
         NavigationStack{
             VStack{
@@ -20,31 +18,6 @@ struct HomeView: View {
                 
                 Spacer()
                 
-                // Navigate to current program
-                NavigationLink(destination: WeekView()) {
-                    Text("Current Program")
-                        .bold()
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .padding()
-                Spacer()
-                
-                // Navigate to program selection
-                NavigationLink(destination: ProgramsView()) {
-                    Text("My Programs")
-                        .bold()
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .padding()
-  
                 // Navigate to program creation
                 NavigationLink(destination: NewProgramView()) {
                     Text("Create New Program")
@@ -56,8 +29,8 @@ struct HomeView: View {
                         .cornerRadius(10)
                 }
                 .padding()
-                Spacer()
                 
+                Spacer()
             }
             .padding()
         }
@@ -66,5 +39,4 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environmentObject(AuthViewModel())
 }

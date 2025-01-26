@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseFirestore
 
 /*
 struct Exercise: Identifiable {
@@ -24,8 +23,7 @@ struct Set: Identifiable {
 */
 
 // Data Models
-struct Program: Codable, Identifiable {
-    @DocumentID var id: String? // Firestore document ID
+struct Program: Codable {
     var title: String
     var days: [Day]
 }
