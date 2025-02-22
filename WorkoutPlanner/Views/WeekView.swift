@@ -62,17 +62,36 @@ struct WeekView: View {
                 }
                 if let programData = programDoc?.data() {
                     print("🔥 Firestore Raw Data: \(programData)")
-                    if let daysArray = programData["days"] as? [[String: Any]],
-                       let firstDayData = daysArray.first { // Get first day
+                    if let daysArray = programData["days"] as? [[String: Any]] {
                         do {
-                            let jsonData = try JSONSerialization.data(withJSONObject: firstDayData)
-                            let decodedDay = try JSONDecoder().decode(Day.self, from: jsonData)
-                            print("✅ Successfully Decoded Day: \(decodedDay)")
+                            // Extract and print raw program data
+                            print("🔥 Firestore Raw Data: \(programData)")
+
+                            // Extract title
+                            let programTitle = programData["title"] as? String ?? "Untitled Program"
+                            print("✅ Decoded Title: \(programTitle)")
+
+                            // Extract days array safely
+                            guard let daysRaw = programData["days"] as? [[String: Any]] else {
+                                print("❌ Error: Could not find 'days' array")
+                                return
+                            }
+                            
+                            // Decode days manually
+                            let jsonDaysData = try JSONSerialization.data(withJSONObject: daysRaw)
+                            let decodedDays = try JSONDecoder().decode([Day].self, from: jsonDaysData)
+                            print("✅ Successfully Decoded Days: \(decodedDays)")
+
+                            // Manually construct the Program object
+                            let decodedProgram = Program(id: activeProgramID, title: programTitle, days: decodedDays)
+                            print("✅ Successfully Constructed Program: \(decodedProgram)")
+
                         } catch {
-                            print("❌ Error Decoding Day: \(error.localizedDescription)")
+                            print("❌ Error Decoding Full Program: \(error.localizedDescription)")
                         }
+
                     }
-                    
+
                     /*
                      if let daysArray = programData["days"] as? [[String: Any]] {
                      for (dayIndex, day) in daysArray.enumerated() {
