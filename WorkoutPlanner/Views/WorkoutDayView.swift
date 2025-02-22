@@ -45,7 +45,7 @@ struct WorkoutDayView: View {
             // Floating label
             VStack {
                 HStack {
-                    Text("\(day.title):")
+                    Text("\(day.title)")
                         .font(.title)
                         .fontWeight(.bold)
 
