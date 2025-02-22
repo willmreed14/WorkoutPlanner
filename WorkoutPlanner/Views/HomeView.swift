@@ -35,9 +35,23 @@ struct HomeView: View {
                 
                 //Spacer()
                 
-                // Navigate to program creation
+                // Navigate to program selection
                 NavigationLink(destination: ProgramsView()) {
                     Text("My Programs")
+                        .bold()
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding()
+                
+                Spacer()
+                
+                // Navigate to current program
+                NavigationLink(destination: WeekView()) {
+                    Text("Active Program")
                         .bold()
                         .frame(maxWidth: .infinity)
                         .padding()

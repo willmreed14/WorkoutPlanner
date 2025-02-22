@@ -11,57 +11,30 @@ import Firebase
 
 struct WeekView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    @State private var program: Program? = nil // Store the active program
+    @State private var programTitle: String = "Loading..." // Store only the title initially
     @State private var loading: Bool = true // Track loading state
-
-    let daysOfWeek = [
-        "Monday", "Tuesday", "Wednesday",
-        "Thursday", "Friday", "Saturday", "Sunday"
-    ]
 
     var body: some View {
         NavigationView {
-            if loading {
-                // Show a loading state while fetching data
-                ProgressView("Loading program...")
-            } else if let program = program {
-                // Display days of the week linked to WorkoutDayView
-                List(0..<7, id: \.self) { index in
-                    NavigationLink(
-                        destination: WorkoutDayView(day: program.days[index])
-                    ) {
-                        Text(daysOfWeek[index])
-                            .font(.headline)
-                            .padding()
-                    }
-                }
-                .navigationTitle("Week View")
-            } else {
-                // No program available
-                Text("No program selected.")
-                    .font(.headline)
-                    .padding()
-            }
-        }
+            VStack {
+                if loading {
+                    ProgressView("Loading program...")
+                } else {
+                    Text(programTitle) // Display program title
+                        .font(.title)
+                        .bold()
+                        .padding()
 
-        // Add a sign-out button for testing
-        Button(action: {
-            authViewModel.signOut()
-        }) {
-            Text("Sign Out")
-                .bold()
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.red)
-                .foregroundColor(.white)
-                .cornerRadius(8)
+                    Spacer()
+                }
+            }
+            .navigationTitle("Week View")
         }
-        .padding()
-        .onAppear(perform: fetchProgram) // Fetch program data on load
+        .onAppear(perform: fetchProgramTitle) // Fetch only the title for now
     }
 
-    // Fetch the active program from Firestore
-    func fetchProgram() {
+    // Fetch the title of the active program
+    func fetchProgramTitle() {
         guard let userID = authViewModel.user?.uid else {
             print("User not signed in!")
             loading = false
@@ -69,24 +42,41 @@ struct WeekView: View {
         }
 
         let db = Firestore.firestore()
-        db.collection("users").document(userID).collection("programs").getDocuments { snapshot, error in
+        let userRef = db.collection("users").document(userID)
+
+        // Fetch the active program ID
+        userRef.getDocument { document, error in
             if let error = error {
-                print("Error fetching programs: \(error.localizedDescription)")
+                print("Error fetching active program ID: \(error.localizedDescription)")
                 loading = false
                 return
             }
 
-            if let documents = snapshot?.documents,
-               let programData = documents.first?.data() {
-                do {
-                    let program = try Firestore.Decoder().decode(Program.self, from: programData)
-                    self.program = program
-                } catch {
-                    print("Error decoding program: \(error.localizedDescription)")
-                }
+            guard let activeProgramID = document?.data()?["activeProgram"] as? String else {
+                print("No active program found.")
+                programTitle = "No Program Selected"
+                loading = false
+                return
             }
 
-            loading = false
+            // Fetch the program details using the activeProgramID
+            let programRef = db.collection("users").document(userID).collection("programs").document(activeProgramID)
+            programRef.getDocument { programDoc, error in
+                if let error = error {
+                    print("Error fetching active program: \(error.localizedDescription)")
+                    loading = false
+                    return
+                }
+
+                if let programData = programDoc?.data(),
+                   let title = programData["title"] as? String {
+                    self.programTitle = title
+                } else {
+                    self.programTitle = "Unknown Program"
+                }
+
+                loading = false
+            }
         }
     }
 }
