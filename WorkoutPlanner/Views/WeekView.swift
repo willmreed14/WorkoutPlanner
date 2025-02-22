@@ -44,7 +44,7 @@ struct WeekView: View {
                     }
                 }
             }
-            .navigationTitle("Week View")
+            .navigationTitle("")
         }
         .onAppear(perform: fetchProgramData)
     }

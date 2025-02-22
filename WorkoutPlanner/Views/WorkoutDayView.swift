@@ -6,6 +6,13 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
+
+// Function to format numbers (removes trailing .0 if whole number)
+func formatNumber(_ value: Double) -> String {
+    return value.truncatingRemainder(dividingBy: 1) == 0 ? "\(Int(value))" : "\(value)"
+}
 
 struct WorkoutDayView: View {
     let day: Day // Pass a `Day` object dynamically
@@ -18,9 +25,10 @@ struct WorkoutDayView: View {
                         VStack(alignment: .leading, spacing: 5) {
                             Text(exercise.title)
                                 .font(.headline)
+                                .bold()
 
                             ForEach(exercise.sets.indices, id: \.self) { index in
-                                Text("Set \(index + 1): Reps: \(exercise.sets[index].reps), Weight: \(exercise.sets[index].weight) lbs")
+                                Text("Set \(index + 1): Reps: \(formatNumber(exercise.sets[index].reps)), Weight: \(formatNumber(exercise.sets[index].weight)) lbs")
                                     .font(.subheadline)
                             }
                             Divider()
