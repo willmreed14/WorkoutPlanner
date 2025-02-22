@@ -60,64 +60,131 @@ struct WeekView: View {
                     loading = false
                     return
                 }
-                
                 if let programData = programDoc?.data() {
-                    print("🔥 Firestore Raw Data: \(programData)") // Log Firestore data
-                    
-                    do {
-                        // ✅ Step 1: Decode only the title
-                        let title = programData["title"] as? String ?? "Unknown"
-                        print("✅ Decoded Title: \(title)")
-                        
-                        // ✅ Step 2: Decode only days array
-                        let daysArray = programData["days"] as? [[String: Any]]
-                        print("✅ Decoded Days Raw: \(String(describing: daysArray))")
-                        
-                        // ✅ Step 3: Decode entire program
-                        let program = try Firestore.Decoder().decode(Program.self, from: programData)
-                        print("✅ Fully Decoded Program: \(program)")
-                        
-                        // ✅ Update UI with decoded data
-                        self.days = program.days
-                    } catch {
-                        print("❌ Error decoding program: \(error.localizedDescription)")
+                    print("🔥 Firestore Raw Data: \(programData)")
+                    if let daysArray = programData["days"] as? [[String: Any]],
+                       let firstDay = daysArray.first, // Get first day
+                       let exercisesArray = firstDay["exercises"] as? [[String: Any]],
+                       let firstExerciseData = exercisesArray.first { // Get first exercise
+                        do {
+                            let jsonData = try JSONSerialization.data(withJSONObject: firstExerciseData)
+                            let decodedExercise = try JSONDecoder().decode(Exercise.self, from: jsonData)
+                            print("✅ Successfully Decoded Exercise: \(decodedExercise)")
+                        } catch {
+                            print("❌ Error Decoding Exercise: \(error.localizedDescription)")
+                        }
                     }
+
+                    /*
+                    if let daysArray = programData["days"] as? [[String: Any]] {
+                        for (dayIndex, day) in daysArray.enumerated() {
+                            print("🟢 Day \(dayIndex + 1) Title: \(day["title"] ?? "Unknown")")
+                            
+                            if let exercisesArray = day["exercises"] as? [[String: Any]] {
+                                for (exerciseIndex, exercise) in exercisesArray.enumerated() {
+                                    print("🟡 Exercise \(exerciseIndex + 1): \(exercise)")
+                                    
+                                    // Check if title exists
+                                    if exercise["title"] == nil {
+                                        print("❌ ERROR: Missing 'title' field in Exercise \(exerciseIndex + 1) of Day \(dayIndex + 1)")
+                                    }
+                                    
+                                    // Check if sets exist
+                                    if let setsArray = exercise["sets"] as? [[String: Any]] {
+                                        for (setIndex, set) in setsArray.enumerated() {
+                                            print("   🔹 Set \(setIndex + 1): \(set)")
+                                            
+                                            // Check if reps and weight exist
+                                            if set["reps"] == nil || set["weight"] == nil {
+                                                print("❌ ERROR: Missing 'reps' or 'weight' in Set \(setIndex + 1) of Exercise \(exerciseIndex + 1)")
+                                            }
+                                        }
+                                    } else {
+                                        print("❌ ERROR: Missing or incorrect 'sets' array in Exercise \(exerciseIndex + 1) of Day \(dayIndex + 1)")
+                                    }
+                                }
+                            } else {
+                                print("🔴 ERROR: Exercises missing for Day \(dayIndex + 1)")
+                            }
+                        }
+                    }
+                     */
+                    
+                    /*
+                     if let daysArray = programData["days"] as? [[String: Any]] {
+                     for (index, day) in daysArray.enumerated() {
+                     print("🟢 Day \(index + 1) Title: \(day["title"] ?? "Unknown")")
+                     
+                     if let exercisesArray = day["exercises"] as? [[String: Any]] {
+                     print("🟡 Exercises for Day \(index + 1): \(exercisesArray)")
+                     } else {
+                     print("🔴 Exercises missing or empty for Day \(index + 1)")
+                     }
+                     }
+                     } else {
+                     print("❌ Error: Days array is missing or not in the expected format")
+                     }
+                     }
+                     */
+                    /*
+                     if let programData = programDoc?.data() {
+                     print("🔥 Firestore Raw Data: \(programData)") // Log Firestore data
+                     
+                     do {
+                     // ✅ Step 1: Decode only the title
+                     let title = programData["title"] as? String ?? "Unknown"
+                     print("✅ Decoded Title: \(title)")
+                     
+                     // ✅ Step 2: Decode only days array
+                     let daysArray = programData["days"] as? [[String: Any]]
+                     print("✅ Decoded Days Raw: \(String(describing: daysArray))")
+                     
+                     // ✅ Step 3: Decode entire program
+                     let program = try Firestore.Decoder().decode(Program.self, from: programData)
+                     print("✅ Fully Decoded Program: \(program)")
+                     
+                     // ✅ Update UI with decoded data
+                     self.days = program.days
+                     } catch {
+                     print("❌ Error decoding program: \(error.localizedDescription)")
+                     }
+                     */
                 }
                 
                 loading = false
             }
         }
     }
-}
-
-// ✅ Helper View for Each Day
-struct DayView: View {
-    let day: Day
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(day.title)
-                .font(.headline)
-                .bold()
-                .padding(.bottom, 5)
-
-            if !day.exercises.isEmpty {
-                ForEach(day.exercises.indices, id: \.self) { exerciseIndex in
-                    Text("- \(day.exercises[exerciseIndex].title)")
-                        .font(.subheadline)
+    // }
+    
+    // ✅ Helper View for Each Day
+    struct DayView: View {
+        let day: Day
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                Text(day.title)
+                    .font(.headline)
+                    .bold()
+                    .padding(.bottom, 5)
+                
+                if !day.exercises.isEmpty {
+                    ForEach(day.exercises.indices, id: \.self) { exerciseIndex in
+                        Text("- \(day.exercises[exerciseIndex].title)")
+                            .font(.subheadline)
+                            .padding(.leading)
+                    }
+                } else {
+                    Text("No exercises")
+                        .foregroundColor(.gray)
+                        .italic()
                         .padding(.leading)
                 }
-            } else {
-                Text("No exercises")
-                    .foregroundColor(.gray)
-                    .italic()
-                    .padding(.leading)
             }
+            .padding()
         }
-        .padding()
     }
 }
-
 
 #Preview {
     WeekView()

@@ -31,13 +31,13 @@ struct Program: Codable {
 }
 
 struct Day: Codable {
-    var title: String
-    var exercises: [Exercise]
+    var title: String = "Active Rest"
+    var exercises: [Exercise] = []
 }
 
 struct Exercise: Codable {
-    var title: String
-    var sets: [Set]
+    var title: String = "Untitled Exercise"
+    var sets: [Set] = []
 }
 
 struct Set: Codable {
