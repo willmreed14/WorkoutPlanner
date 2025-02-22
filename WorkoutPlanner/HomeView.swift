@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @EnvironmentObject var authViewModel: AuthViewModel // Access authentication model
+    
     var body: some View {
         NavigationStack{
             VStack{
@@ -31,6 +34,20 @@ struct HomeView: View {
                 .padding()
                 
                 Spacer()
+                
+                // Sign Out Button
+                Button(action: {
+                    authViewModel.signOut()
+                }){
+                    Text("Sign Out")
+                        .bold()
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.bottom)
             }
             .padding()
         }
@@ -39,4 +56,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environmentObject(AuthViewModel()) // Ensure environment object is provided
 }

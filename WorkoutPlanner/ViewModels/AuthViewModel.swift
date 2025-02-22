@@ -4,7 +4,7 @@ import SwiftUI
 class AuthViewModel: ObservableObject {
     @Published var user: User? // Store the current Firebase user
     @Published var isAuthenticated: Bool = false
-    @Published var errorMessage: String? // error message of login does not work
+    @Published var errorMessage: String? // error message if login does not work
     @Published var signUpSuccess: Bool = false // Track successful sign up
 
     init() {
