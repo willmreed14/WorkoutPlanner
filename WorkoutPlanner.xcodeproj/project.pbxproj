@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,35 +20,25 @@
 		BE253B0B2D3DE92900515AB3 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = BE253B0A2D3DE92900515AB3 /* FirebaseCrashlytics */; };
 		BE253B0D2D3DE92900515AB3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BE253B0C2D3DE92900515AB3 /* FirebaseFirestore */; };
 		BE253B0F2D3DE92900515AB3 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = BE253B0E2D3DE92900515AB3 /* FirebaseFirestoreCombine-Community */; };
-		BE253B112D3DEA2900515AB3 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE253B102D3DEA2900515AB3 /* SignInView.swift */; };
 		BE253B142D3DEC5B00515AB3 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE253B132D3DEC5B00515AB3 /* AuthViewModel.swift */; };
-		BE253B162D3DECD000515AB3 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE253B152D3DECD000515AB3 /* SignUpView.swift */; };
 		BE6EA7B42D38B715005D8BE8 /* WorkoutPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6EA7B32D38B715005D8BE8 /* WorkoutPlannerApp.swift */; };
-		BE6EA7B62D38B715005D8BE8 /* WorkoutDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6EA7B52D38B715005D8BE8 /* WorkoutDayView.swift */; };
 		BE6EA7B82D38B715005D8BE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6EA7B72D38B715005D8BE8 /* Assets.xcassets */; };
 		BE6EA7BB2D38B715005D8BE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6EA7BA2D38B715005D8BE8 /* Preview Assets.xcassets */; };
-		BE9F61662D3DAE6600F27AA2 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9F61652D3DAE6600F27AA2 /* WeekView.swift */; };
-		BEABEBAF2D3F0D3C0051BAED /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEABEBAE2D3F0D3C0051BAED /* HomeView.swift */; };
-		BEABEBB12D3F0F4C0051BAED /* NewProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEABEBB02D3F0F4C0051BAED /* NewProgramView.swift */; };
-		BED4315E2D3DFA200092BEA3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED4315D2D3DFA200092BEA3 /* RootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BE127D432D3B5F95001BE9E1 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		BE253AF72D3DE75600515AB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		BE253B102D3DEA2900515AB3 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		BE253B132D3DEC5B00515AB3 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		BE253B152D3DECD000515AB3 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		BE6EA7B02D38B715005D8BE8 /* WorkoutPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6EA7B32D38B715005D8BE8 /* WorkoutPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPlannerApp.swift; sourceTree = "<group>"; };
-		BE6EA7B52D38B715005D8BE8 /* WorkoutDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDayView.swift; sourceTree = "<group>"; };
 		BE6EA7B72D38B715005D8BE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE6EA7BA2D38B715005D8BE8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BE9F61652D3DAE6600F27AA2 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
-		BEABEBAE2D3F0D3C0051BAED /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		BEABEBB02D3F0F4C0051BAED /* NewProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProgramView.swift; sourceTree = "<group>"; };
-		BED4315D2D3DFA200092BEA3 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BE85E1122D696B67008E0173 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BE6EA7AD2D38B714005D8BE8 /* Frameworks */ = {
@@ -99,14 +89,8 @@
 		BE6EA7B22D38B715005D8BE8 /* WorkoutPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				BE85E1122D696B67008E0173 /* Views */,
 				BE6EA7B32D38B715005D8BE8 /* WorkoutPlannerApp.swift */,
-				BED4315D2D3DFA200092BEA3 /* RootView.swift */,
-				BEABEBAE2D3F0D3C0051BAED /* HomeView.swift */,
-				BEABEBB02D3F0F4C0051BAED /* NewProgramView.swift */,
-				BE253B102D3DEA2900515AB3 /* SignInView.swift */,
-				BE253B152D3DECD000515AB3 /* SignUpView.swift */,
-				BE9F61652D3DAE6600F27AA2 /* WeekView.swift */,
-				BE6EA7B52D38B715005D8BE8 /* WorkoutDayView.swift */,
 				BE127D432D3B5F95001BE9E1 /* Models.swift */,
 				BE253B122D3DEC2F00515AB3 /* ViewModels */,
 				BE253AF72D3DE75600515AB3 /* GoogleService-Info.plist */,
@@ -138,6 +122,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BE85E1122D696B67008E0173 /* Views */,
 			);
 			name = WorkoutPlanner;
 			packageProductDependencies = (
@@ -211,16 +198,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEABEBB12D3F0F4C0051BAED /* NewProgramView.swift in Sources */,
-				BEABEBAF2D3F0D3C0051BAED /* HomeView.swift in Sources */,
-				BED4315E2D3DFA200092BEA3 /* RootView.swift in Sources */,
-				BE9F61662D3DAE6600F27AA2 /* WeekView.swift in Sources */,
 				BE127D442D3B5F95001BE9E1 /* Models.swift in Sources */,
 				BE253B142D3DEC5B00515AB3 /* AuthViewModel.swift in Sources */,
-				BE253B162D3DECD000515AB3 /* SignUpView.swift in Sources */,
-				BE6EA7B62D38B715005D8BE8 /* WorkoutDayView.swift in Sources */,
 				BE6EA7B42D38B715005D8BE8 /* WorkoutPlannerApp.swift in Sources */,
-				BE253B112D3DEA2900515AB3 /* SignInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
