@@ -41,6 +41,6 @@ struct Exercise: Codable {
 }
 
 struct Set: Codable {
-    var reps: Int
-    var weight: Int
+    var reps: Double
+    var weight: Double
 }
