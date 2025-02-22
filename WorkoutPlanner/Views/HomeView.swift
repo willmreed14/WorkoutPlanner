@@ -33,6 +33,20 @@ struct HomeView: View {
                 }
                 .padding()
                 
+                //Spacer()
+                
+                // Navigate to program creation
+                NavigationLink(destination: ProgramsView()) {
+                    Text("My Programs")
+                        .bold()
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding()
+                
                 Spacer()
                 
                 // Sign Out Button
