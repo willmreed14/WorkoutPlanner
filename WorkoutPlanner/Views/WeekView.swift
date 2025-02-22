@@ -11,8 +11,7 @@ import Firebase
 
 struct WeekView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    @State private var programTitle: String = "Loading..." // Store program title
-    @State private var days: [String] = [] // Store only day titles initially
+    @State private var days: [Day] = [] // Store all days
     @State private var loading: Bool = true // Track loading state
 
     var body: some View {
@@ -21,25 +20,16 @@ struct WeekView: View {
                 if loading {
                     ProgressView("Loading program...")
                 } else {
-                    Text(programTitle)
-                        .font(.title)
-                        .bold()
-                        .padding()
-
                     List(days.indices, id: \.self) { index in
-                        Text(days[index])
-                            .font(.headline)
-                            .padding()
+                        DayView(day: days[index]) // ✅ Extracted into a separate view
                     }
-
                 }
             }
             .navigationTitle("Week View")
         }
-        .onAppear(perform: fetchProgramData) // Fetch program data
+        .onAppear(perform: fetchProgramData)
     }
 
-    // Fetch the title and days of the active program
     func fetchProgramData() {
         guard let userID = authViewModel.user?.uid else {
             print("User not signed in!")
@@ -50,7 +40,6 @@ struct WeekView: View {
         let db = Firestore.firestore()
         let userRef = db.collection("users").document(userID)
 
-        // Fetch the active program ID
         userRef.getDocument { document, error in
             if let error = error {
                 print("Error fetching active program ID: \(error.localizedDescription)")
@@ -60,12 +49,10 @@ struct WeekView: View {
 
             guard let activeProgramID = document?.data()?["activeProgram"] as? String else {
                 print("No active program found.")
-                programTitle = "No Program Selected"
                 loading = false
                 return
             }
 
-            // Fetch the program details
             let programRef = db.collection("users").document(userID).collection("programs").document(activeProgramID)
             programRef.getDocument { programDoc, error in
                 if let error = error {
@@ -75,13 +62,11 @@ struct WeekView: View {
                 }
 
                 if let programData = programDoc?.data() {
-                    self.programTitle = programData["title"] as? String ?? "Unknown Program"
-                    
-                    // Extract day titles
-                    if let daysArray = programData["days"] as? [[String: Any]] {
-                        self.days = daysArray.compactMap { $0["title"] as? String }
-                    } else {
-                        self.days = []
+                    do {
+                        let program = try Firestore.Decoder().decode(Program.self, from: programData)
+                        self.days = program.days
+                    } catch {
+                        print("Error decoding program: \(error.localizedDescription)")
                     }
                 }
 
@@ -90,6 +75,35 @@ struct WeekView: View {
         }
     }
 }
+
+// ✅ Helper View for Each Day
+struct DayView: View {
+    let day: Day
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(day.title)
+                .font(.headline)
+                .bold()
+                .padding(.bottom, 5)
+
+            if !day.exercises.isEmpty {
+                ForEach(day.exercises.indices, id: \.self) { exerciseIndex in
+                    Text("- \(day.exercises[exerciseIndex].title)")
+                        .font(.subheadline)
+                        .padding(.leading)
+                }
+            } else {
+                Text("No exercises")
+                    .foregroundColor(.gray)
+                    .italic()
+                    .padding(.leading)
+            }
+        }
+        .padding()
+    }
+}
+
 
 #Preview {
     WeekView()

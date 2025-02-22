@@ -32,7 +32,7 @@ struct NewProgramView: View {
 
                         ForEach(days[index].exercises.indices, id: \.self) { exerciseIndex in
                             VStack(alignment: .leading) {
-                                TextField("Exercise Name", text: $days[index].exercises[exerciseIndex].name)
+                                TextField("Exercise Title", text: $days[index].exercises[exerciseIndex].title)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding(.bottom, 5)
 
@@ -54,7 +54,7 @@ struct NewProgramView: View {
                             .padding(.vertical)
                         }
                         Button("Add Exercise") {
-                            days[index].exercises.append(Exercise(name: "", sets: []))
+                            days[index].exercises.append(Exercise(title: "", sets: []))
                         }
                     }
                 }

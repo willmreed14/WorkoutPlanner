@@ -36,7 +36,7 @@ struct Day: Codable {
 }
 
 struct Exercise: Codable {
-    var name: String
+    var title: String
     var sets: [Set]
 }
 

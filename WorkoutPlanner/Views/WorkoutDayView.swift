@@ -14,9 +14,9 @@ struct WorkoutDayView: View {
         ZStack(alignment: .top) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 15) {
-                    ForEach(day.exercises, id: \.name) { exercise in
+                    ForEach(day.exercises, id: \.title) { exercise in
                         VStack(alignment: .leading, spacing: 5) {
-                            Text(exercise.name)
+                            Text(exercise.title)
                                 .font(.headline)
 
                             ForEach(exercise.sets.indices, id: \.self) { index in
@@ -55,12 +55,12 @@ struct WorkoutDayView: View {
 
 #Preview {
     WorkoutDayView(day: Day(title: "Push", exercises: [
-        Exercise(name: "Lat Pulldown", sets: [
+        Exercise(title: "Lat Pulldown", sets: [
             Set(reps: 10, weight: 100),
             Set(reps: 10, weight: 100),
             Set(reps: 10, weight: 100)
         ]),
-        Exercise(name: "Bench Press", sets: [
+        Exercise(title: "Bench Press", sets: [
             Set(reps: 8, weight: 150),
             Set(reps: 8, weight: 150),
             Set(reps: 8, weight: 150)
